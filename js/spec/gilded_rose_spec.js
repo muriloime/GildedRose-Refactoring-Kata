@@ -1,19 +1,21 @@
-// var Shop = require('../src/gilded_rose');
-// var Item = require('../src/gilded_rose');
-import Shop from '../src/gilded_rose';
-import Item from '../src/gilded_rose';
+var Shop = require('../src/gilded_rose').Shop;
+var Item = require('../src/gilded_rose').Item;
 
-
-console.log(Shop);
-console.log(Item);
 
 describe("Gilded Rose", function() {
 
   it("should foo", function() {
     const gilgedRose = new Shop([ new Item("foo", 0, 0) ]);
-    console.log(gilgedRose);
     const items = gilgedRose.updateQuality();
     expect(items[0].name).toEqual("foo");
+  });
+
+
+  it("Aged Brie should foo", function() {
+    const gilgedRose = new Shop([ new Item("Fromage", 50, 50) ]);
+    const items = gilgedRose.updateQuality();
+    expect(items[0].quality).toEqual(49);
+    expect(items[0].sellIn).toEqual(49);
   });
 
 });

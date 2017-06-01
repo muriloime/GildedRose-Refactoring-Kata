@@ -3,6 +3,14 @@ exports.Shop =  class Shop {
     this.items = items;
   }
 
+  increaseQuality(item) { 
+    item.quality = item.quality + 1
+  }
+  increaseLowQuality(item){ 
+    if (item.quality < 50) {
+      this.increaseQuality(item)
+    }
+  }
   updateQuality() {
     for (var i = 0; i < this.items.length; i++) {
       if (this.items[i].name != 'Aged Brie' && this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
@@ -16,14 +24,10 @@ exports.Shop =  class Shop {
           this.items[i].quality = this.items[i].quality + 1
           if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
             if (this.items[i].sellIn < 11) {
-              if (this.items[i].quality < 50) {
-                this.items[i].quality = this.items[i].quality + 1
-              }
+              this.increaseLowQuality(this.items[i])
             }
             if (this.items[i].sellIn < 6) {
-              if (this.items[i].quality < 50) {
-                this.items[i].quality = this.items[i].quality + 1
-              }
+              this.increaseLowQuality(this.items[i])
             }
           }
         }
@@ -43,9 +47,7 @@ exports.Shop =  class Shop {
             this.items[i].quality = this.items[i].quality - this.items[i].quality
           }
         } else {
-          if (this.items[i].quality < 50) {
-            this.items[i].quality = this.items[i].quality + 1
-          }
+          this.increaseLowQuality(this.items[i])
         }
       }
     }

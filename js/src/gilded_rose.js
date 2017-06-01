@@ -61,5 +61,5 @@ class Shop {
   }
 }
 
-module.exports = Shop;
-module.exports = Item;
+module.exports.Shop;
+module.exports.Item;

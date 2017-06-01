@@ -1,4 +1,4 @@
-module.exports = class Item {
+class Item {
   constructor(name, sellIn, quality){
     this.name = name;
     this.sellIn = sellIn;
@@ -6,7 +6,7 @@ module.exports = class Item {
   }
 }
 
-module.exports = class Shop {
+class Shop {
   constructor(items=[]){
     this.items = items;
   }
@@ -60,3 +60,6 @@ module.exports = class Shop {
     return this.items;
   }
 }
+
+module.exports = Shop;
+module.exports = Item;

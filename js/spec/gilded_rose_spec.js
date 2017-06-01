@@ -18,4 +18,20 @@ describe("Gilded Rose", function() {
     expect(items[0].sellIn).toEqual(49);
   });
 
+  it("Backstage should increase when sellin is less than 5", function() {
+    const gilgedRose = new Shop([
+      new Item("Backstage passes to a TAFKAL80ETC concert", 3, 10)
+    ]);
+    const items = gilgedRose.updateQuality();
+    expect(items[0].quality).toEqual(13);
+  });
+
+  it("Backstage should increase when sellin is less than 10", function() {
+    const gilgedRose = new Shop([
+      new Item("Backstage passes to a TAFKAL80ETC concert", 9, 10)
+    ]);
+    const items = gilgedRose.updateQuality();
+    expect(items[0].quality).toEqual(12);
+  });
+
 });
